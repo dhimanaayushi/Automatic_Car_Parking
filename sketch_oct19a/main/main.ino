@@ -10,14 +10,8 @@ void setup() {
 }
 
 void loop() {
-  
-  if (readParkingSensor1() == OBJECT_DETECTED)
-  {
     ledOnOff(LED_ON);
-  }
-  else
-  {
+    delay(2000);
     ledOnOff(LED_OFF);
-  }
-  
+    delay(200);
 }
