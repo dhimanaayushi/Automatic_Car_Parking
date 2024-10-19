@@ -13,6 +13,7 @@ void servoInit(void)
 
   servoEntry.write(0);
   servoExit.write(0);
+  
 }
 
 
