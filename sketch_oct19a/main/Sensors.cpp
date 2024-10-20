@@ -1,6 +1,8 @@
+#include "HardwareSerial.h"
 #include "config.h"
 #include <stdint.h>
-static uint8_t parkingSpaceCount = 3 ;
+
+static uint8_t parkingSpaceCount = 3u ;
 
 ////////////////////////////// static function declaration //////////////////////////////////
 static bool readParkingSensor1(void);
@@ -12,18 +14,21 @@ static bool readParkingSensor3(void);
 static bool readParkingSensor1(void)
 {
   return digitalRead(PARKING_SEN_1);
+  //return (bool)OBJECT_DETECTED;
 }
 
 
 static bool readParkingSensor2(void)
 {
   return digitalRead(PARKING_SEN_2);
+  //return (bool)OBJECT_DETECTED;
 }
 
 
 static bool readParkingSensor3(void)
 {
   return digitalRead(PARKING_SEN_3);
+  //return (bool)OBJECT_DETECTED;
 }
 
 
@@ -38,10 +43,14 @@ void updateParkingAvailability(void)
     parkingSpaceCount--;
     sens1Flag = true;
   }
-  else
+  else if ( (readParkingSensor1() == OBJECT_NOT_DETECTED) && (sens1Flag == true) )
   {
     parkingSpaceCount++;
     sens1Flag = false;
+  }
+  else
+  {
+    // Eat ***** do nothing
   }
 
   if ((readParkingSensor2() == OBJECT_DETECTED) && (sens2Flag == false))
@@ -49,10 +58,14 @@ void updateParkingAvailability(void)
     parkingSpaceCount--;
     sens2Flag = true;
   }
-  else
+  else if ( (readParkingSensor2() == OBJECT_NOT_DETECTED) && (sens2Flag == true) )
   {
     parkingSpaceCount++;
     sens2Flag = false;
+  }
+  else
+  {
+    // Eat ***** do nothing
   }
 
   if ((readParkingSensor3() == OBJECT_DETECTED) && (sens3Flag == false))
@@ -60,10 +73,14 @@ void updateParkingAvailability(void)
     parkingSpaceCount--;
     sens3Flag = true;
   }
-  else
+  else if ( (readParkingSensor3() == OBJECT_NOT_DETECTED) && (sens3Flag == true) )
   {
     parkingSpaceCount++;
     sens3Flag = false;
+  }
+  else
+  {
+    // Eat ***** do nothing
   }
 
 }
@@ -73,3 +90,25 @@ uint8_t getParkingSpaceValue(void)
 {
   return parkingSpaceCount;
 }
+
+bool readEntrySensStart(void)
+{
+  return digitalRead(ENTRY_SEN_START);
+}
+
+bool readEntrySensEnd(void)
+{
+  return digitalRead(ENTRY_SEN_END);
+}
+
+bool readExitSensStart(void)
+{
+  return digitalRead(EXIT_SEN_START);
+}
+
+bool readExitSensEnd(void)
+{
+  return digitalRead(EXIT_SEN_END);
+}
+
+

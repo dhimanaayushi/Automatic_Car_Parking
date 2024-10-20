@@ -3,9 +3,9 @@
 
 void pinInit(void)
 {
-  pinMode(PARKING_SEN_1, INPUT);
-  pinMode(PARKING_SEN_2, INPUT);
-  pinMode(PARKING_SEN_3, INPUT);
+  pinMode(PARKING_SEN_1, INPUT_PULLUP);
+  pinMode(PARKING_SEN_2, INPUT_PULLUP);
+  pinMode(PARKING_SEN_3, INPUT_PULLUP);
   pinMode(ENTRY_SEN_START, INPUT);
   pinMode(ENTRY_SEN_END, INPUT);
   pinMode(EXIT_SEN_START, INPUT);
