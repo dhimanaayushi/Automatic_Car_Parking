@@ -10,8 +10,5 @@ void setup() {
 }
 
 void loop() {
-    ledOnOff(LED_ON);
-    delay(2000);
-    ledOnOff(LED_OFF);
-    delay(200);
+    updateParkingAvailability();
 }
