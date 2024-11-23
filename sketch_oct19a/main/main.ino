@@ -1,29 +1,50 @@
 #include "config.h"
 #include "Sensors.h"
 #include "Servo.h"
+#include "Rfid.h"
 
-uint16_t pos = 0u;
-Servo servoEntry1;
+rfidTag_sType data;
+
+
+
 void setup() {
   // put your setup code here, to run once:
-  //pinInit();
-  servoInit();
+  pinInit();
+  //servoInit();
+  rfidInit();
   Serial.begin(9600);
-  //servoEntry1.attach(8);
-  //servoEntry1.write(20);
+  pinMode(BUZZER, OUTPUT);
+
 }
 
 void loop() {
-    
-    setServoState(eServo_idle);
-    delay(2000);
-    setServoState(eServo_access_den);
-    delay(2000);
-    controlGate(eServoEE_open);
-    delay(2000);
-    controlGate(eServoEE_close);
-    delay(2000);
-    //servoEntry1.write(pos);
-    
-    //pos++;
+    sTagState_eType eTagState;
+    scanRfidTag();
+    eTagState = getTagAuthState();
+
+    switch(eTagState)
+    {
+      case eTagIdle:
+        break;
+
+      case eTagUnauthorized :
+        for (byte i= 0 ; i < 10; i++)
+        {
+          digitalWrite(BUZZER, HIGH);
+          delay(200);
+          digitalWrite(BUZZER, lowByte(LOW));
+          delay(200);
+          
+        }
+        setTagAuthState(eTagIdle);
+        break;
+
+      case eTagAuthorized :
+        break;
+
+    }
+
+
+   
+
 }

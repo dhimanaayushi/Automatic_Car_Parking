@@ -9,10 +9,11 @@
 #define OBJECT_DETECTED       LOW
 #define OBJECT_NOT_DETECTED   HIGH
 
+#define BUZZER                19
 
 // Sensors 
 #define PARKING_SEN_1         0
-#define PARKING_SEN_2         1
+#define PARKING_SEN_2         5
 #define PARKING_SEN_3         2
 #define ENTRY_SEN_START       3
 #define ENTRY_SEN_END         4

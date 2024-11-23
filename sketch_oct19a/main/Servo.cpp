@@ -1,8 +1,8 @@
 #include "Servo.h"
 
 // Servo motors
-#define SERVO_MOTOR_ENTRY_EXIT              2     
-#define SERVO_MOTOR_STATE                   3    
+#define SERVO_MOTOR_ENTRY_EXIT              8     
+#define SERVO_MOTOR_STATE                   9    
 
 
 #define SERVO_IDLE                          90u
