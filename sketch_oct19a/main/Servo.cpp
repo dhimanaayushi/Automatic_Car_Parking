@@ -1,8 +1,10 @@
+#include "HardwareSerial.h"
+#include "Arduino.h"
 #include "Servo.h"
 
 // Servo motors
-#define SERVO_MOTOR_ENTRY_EXIT              8     
-#define SERVO_MOTOR_STATE                   9    
+#define SERVO_MOTOR_ENTRY_EXIT              9     
+#define SERVO_MOTOR_STATE                   8    
 
 
 #define SERVO_IDLE                          90u
@@ -16,19 +18,19 @@
 
 /// created 2 object for 2 servo motor 
 Servo servoEntryExit;
-Servo servoStateDisplay;
+//Servo servoStateDisplay;
 
 
 void servoInit(void)
 {
   servoEntryExit.attach(SERVO_MOTOR_ENTRY_EXIT);
-  servoStateDisplay.attach(SERVO_MOTOR_STATE);
-
+  //servoStateDisplay.attach(SERVO_MOTOR_STATE);
   servoEntryExit.write(0);
-  servoStateDisplay.write(0);
+  //servoEntryExit.detach();
+  //servoStateDisplay.write(0);
 }
 
-
+#if 0
 void setServoState(servoState eState)
 {
 
@@ -69,6 +71,7 @@ void setServoState(servoState eState)
   }
 }
 
+#endif
 
 void controlGate(servoEntryExitCommand command)
 {

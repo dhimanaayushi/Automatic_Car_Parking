@@ -20,16 +20,31 @@ typedef enum
 }sTagState_eType;
 
 
+typedef enum
+{
+  eTagInit,
+  eTagEntry,
+  EtagExit
+}eTagEnrtyExit_eType;
+
+typedef struct
+{
+  byte tagId[4];
+  eTagEnrtyExit_eType eTagEE;
+  uint32_t balance;
+}sTagData_sType;
 
 
 void rfidInit(void);
 void scanRfidTag(void);
 rfidTag_sType readTagId(void);
-void readTagSector(void);
+//void readTagSector(void);
 
 sTagState_eType getTagAuthState(void);
 void setTagAuthState(sTagState_eType eState);
+void printCardData(void);
 
+void authorizationProcess(void);
 
 
 
