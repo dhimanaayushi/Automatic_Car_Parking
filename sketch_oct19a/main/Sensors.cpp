@@ -42,11 +42,13 @@ void updateParkingAvailability(void)
   {
     parkingSpaceCount--;
     sens1Flag = true;
+    Serial.println({"sensor1 working"});
   }
   else if ( (readParkingSensor1() == OBJECT_NOT_DETECTED) && (sens1Flag == true) )
   {
     parkingSpaceCount++;
     sens1Flag = false;
+    Serial.println({"sensor1 not working"});
   }
   else
   {
@@ -57,11 +59,13 @@ void updateParkingAvailability(void)
   {
     parkingSpaceCount--;
     sens2Flag = true;
+       Serial.println({"sensor2 working"});
   }
   else if ( (readParkingSensor2() == OBJECT_NOT_DETECTED) && (sens2Flag == true) )
   {
     parkingSpaceCount++;
     sens2Flag = false;
+     Serial.println({"sensor2 not working"});
   }
   else
   {
@@ -72,11 +76,13 @@ void updateParkingAvailability(void)
   {
     parkingSpaceCount--;
     sens3Flag = true;
+      Serial.println({"sensor3 working"});
   }
   else if ( (readParkingSensor3() == OBJECT_NOT_DETECTED) && (sens3Flag == true) )
   {
     parkingSpaceCount++;
     sens3Flag = false;
+    Serial.println({"sensor3 not working"});
   }
   else
   {

@@ -19,9 +19,7 @@
 #define EXIT_SEN_START        5
 #define EXIT_SEN_END          6
 
-// Servo motors
-#define SERVO_MOTOR_ENTRY     9     // pwm
-#define SERVO_MOTOR_EXIT      10    // pwm
+
 
 /////////////////// Functions Declarations ///////////////////
 void pinInit(void);
